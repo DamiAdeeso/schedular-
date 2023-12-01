@@ -22,7 +22,6 @@ public class ScheduledDuePaymentServiceImpl implements ScheduledDuePaymentServic
 
     private Trigger getTrigger() {
         List<ScheduledDuePayment> dueDa = scheduledDuePaymentRepository.findAll();
-        System.out.println("dtata"+ dueDa);
         int dueDay = dueDa.isEmpty() ? 1 : dueDa.get(0).getDueDayNominal();
         //return new CronTrigger("0 0 0 " + dueDay + " * ?");
       //  return new CronTrigger("0/ " + dueDay + " 0 * * ?");
@@ -39,7 +38,6 @@ public class ScheduledDuePaymentServiceImpl implements ScheduledDuePaymentServic
                 e.setStatus("Paid");
             }
         });
-        System.out.println("i am working check me ");
         scheduledDuePaymentRepository.saveAll(dueDa);
     }
 
